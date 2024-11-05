@@ -1,0 +1,979 @@
+{
+	"info": {
+		"_postman_id": "14e973a8-1050-4ba2-bc17-66cfd0f43ee5",
+		"name": "Flight-management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "270136"
+	},
+	"item": [
+		{
+			"name": "user-service",
+			"item": [
+				{
+					"name": "find user by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4d7cdd91-3a5b-4fcb-9775-516dcd074d4f",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9002/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/item-api/item/find",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"item-api",
+								"item",
+								"find"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"moytest\",\n  \"password\": \"hello@123\",\n  \"email\":\"moby@gmail.com\",\n  \"role\":[\n        \"ROLE_MODERATOR\"\n  ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9002/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"moytest\",\n  \"password\": \"hello@123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9002/auth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"test@123\",\n  \"password\": \"test@123\"\n \n}"
+						},
+						"url": {
+							"raw": "http://localhost:9002/auth/validate?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb3l0ZXN0IiwiaWF0IjoxNzIxNTU2MjE5LCJleHAiOjE3MjE2NDI2MTl9.lkQIWr-PD6KrW9pRvat72koTu47nmtcaO38FZ3rYyjg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"auth",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb3l0ZXN0IiwiaWF0IjoxNzIxNTU2MjE5LCJleHAiOjE3MjE2NDI2MTl9.lkQIWr-PD6KrW9pRvat72koTu47nmtcaO38FZ3rYyjg"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"test@123\",\n  \"password\": \"test@123\"\n \n}"
+						},
+						"url": {
+							"raw": "http://localhost:9002/api/user/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"api",
+								"user",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10f0c3da-8426-4b97-a1c4-85c86c1e78c4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/item-api/item/delete/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"item-api",
+								"item",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "spring-auth-service",
+			"item": [
+				{
+					"name": "find user by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4d7cdd91-3a5b-4fcb-9775-516dcd074d4f",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9002/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/item-api/item/find",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"item-api",
+								"item",
+								"find"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"\",\n  \"password\": \"hello@123\",\n  \"phoneNo\":798332916,\n  \"email\":\"test@gmail.com\",\n  \"roles\":[\n    {\n        \"name\":\"user\"\n    }\n    \n  ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9002/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"rohan123\",\n  \"password\": \"hello@123\"\n \n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"test@123\",\n  \"password\": \"test@123\"\n \n}"
+						},
+						"url": {
+							"raw": "http://localhost:9002/auth/validate?token=eJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyZGF0YSIsImlhdCI6MTcyMDk3NDI0MiwiZXhwIjoxNzIwOTc2MDQyfQ.Pb4Zw5l3RkFNjI1n7U4-LmSsdN7QvStNgu8YcOfKGvI",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"auth",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyZGF0YSIsImlhdCI6MTcyMDk3NDI0MiwiZXhwIjoxNzIwOTc2MDQyfQ.Pb4Zw5l3RkFNjI1n7U4-LmSsdN7QvStNgu8YcOfKGvI"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10f0c3da-8426-4b97-a1c4-85c86c1e78c4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/item-api/item/delete/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"item-api",
+								"item",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "booking-service",
+			"item": [
+				{
+					"name": "Find Flight List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9001/book/add",
+							"host": [
+								"localhost"
+							],
+							"port": "9001",
+							"path": [
+								"book",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test controller",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/book-service/book/test",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book-service",
+								"book",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Flight",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "book",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"carrierName\":\"teat123\",\r\n    \"flightMode\":\"AirLine\",\r\n    \"seatCapacity\":45\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/flight/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "book",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"carrierName\":\"teat123\",\r\n    \"flightMode\":\"AirLine\",\r\n    \"seatCapacity\":45\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/flight/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add ScheduleFlight",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "book",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"carrierName\":\"teat123\",\r\n    \"flightMode\":\"AirLine\",\r\n    \"seatCapacity\":45\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/flight/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by flight id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/sales-api/sales/find/by-id?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"sales-api",
+								"sales",
+								"find",
+								"by-id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by sales id Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/sales-api/sales/find/by-id?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"sales-api",
+								"sales",
+								"find",
+								"by-id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Sales",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/sales-api/sales/delete/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"sales-api",
+								"sales",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth-token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "pin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mobile",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "ahasan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "ahasan",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8180/auth-api/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"auth-api",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth-token Copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "pin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mobile",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"paint\",\r\n    \"discreption\": \"yttuu\",\r\n    \"price\":129.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7070/product/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"product",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth-token Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "468f6204-2e26-46ef-9309-ce3562d4dcdf",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8180/auth-api/auth-api/getData",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"auth-api",
+						"auth-api",
+						"getData"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
